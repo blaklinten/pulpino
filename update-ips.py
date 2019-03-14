@@ -22,10 +22,9 @@ def execute_out(cmd, silent=False):
 
 def find_server():
     stdout = execute_out("git remote -v")
-
     stdout = stdout.split('\n')
     for line in stdout:
-        if "origin" in line:
+        if "upstream" in line:
             tmp = line.split(' ')
             tmp = tmp[0].split('\t')
 
