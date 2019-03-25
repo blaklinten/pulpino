@@ -25,7 +25,10 @@ module sp_ram_wrap
     output logic [DATA_WIDTH-1:0]   rdata_o,
     input  logic                    we_i,
     input  logic [DATA_WIDTH/8-1:0] be_i,
-    input  logic                    bypass_en_i
+    input  logic                    bypass_en_i,
+    input  logic [3:0][7:0]         acc_in      [255:0],
+    input  logic [3:0][7:0]         acc_out_A   [255:0],
+    input  logic [3:0][7:0]         acc_out_B   [255:0]
   );
 
 `ifdef PULP_FPGA_EMUL
@@ -84,7 +87,10 @@ module sp_ram_wrap
     .wdata_i ( wdata_i   ),
     .rdata_o ( rdata_o   ),
     .we_i    ( we_i      ),
-    .be_i    ( be_i      )
+    .be_i    ( be_i      ),
+    .acc_in  ( acc_in    ),
+    .acc_out_A  ( acc_out_A    ),
+    .acc_out_B  ( acc_out_B    )
   );
 `endif
 

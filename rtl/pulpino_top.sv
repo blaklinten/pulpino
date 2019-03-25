@@ -180,10 +180,7 @@ module pulpino_top
     .USE_ZERO_RISCY       (  USE_ZERO_RISCY      ),
     .RISCY_RV32F          (  RISCY_RV32F         ),
     .ZERO_RV32M           (  ZERO_RV32M          ),
-    .ZERO_RV32E           (  ZERO_RV32E          ),
-    .acc_in               (  acc_in              ),
-    .acc_out_A            (  acc_out_A           ),
-    .acc_out_B            (  acc_out_B           )
+    .ZERO_RV32E           (  ZERO_RV32E          )
 
   )
   core_region_i
@@ -208,7 +205,10 @@ module pulpino_top
     .trstn_i        ( trstn_i           ),
     .tms_i          ( tms_i             ),
     .tdi_i          ( tdi_i             ),
-    .tdo_o          ( tdo_o             )
+    .tdo_o          ( tdo_o             ),
+    .acc_in               (  acc_in              ),
+    .acc_out_A            (  acc_out_A           ),
+    .acc_out_B            (  acc_out_B           )
   );
   //----------------------------------------------------------------------------//
   // Accelerator
