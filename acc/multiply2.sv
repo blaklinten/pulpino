@@ -11,23 +11,22 @@ module multiply2 #(
 );
 
 int                         i, j, k;
-logic [dat_size-1:0] temp_A;
-logic [dat_size-1:0] temp_B;
-logic [dat_size-1:0] temp_C;
-logic [dat_size-1:0] temp_C2;
 
-reg [dat_size-1:0] reg_C;
+logic [dat_size-1:0] temp_C [mat_size-1:0][mat_size-1:0] = '{'{8'h00, 8'h00},
+                                                              '{8'h00, 8'h00}};
+
 
 always @(posedge start)
   begin
     for(int i=0;i<mat_size;i++) begin
       for(int j=0;j<mat_size;j++) begin
         for(int k=0;k<mat_size;k++) begin
-          reg_C = mat_C[i][j];
-          mat_C[i][j] = (reg_C + (mat_A[i][k] * mat_B[k][j]));
+           temp_C[i][j] = (temp_C[i][j] + (mat_A[i][k] * mat_B[k][j]));
+           $display("%b",temp_C[j][k]);
         end // for(int k=0;k<mat_size;k++)
       end // for(int j=0;j<mat_size;j++)
-    end // for(int i=0;i<mat_size;i++)
+    end // for(int i=0;i<mat_size;i++
+    mat_C = temp_C;
     done = 1;
   end
 endmodule

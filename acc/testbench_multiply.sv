@@ -27,7 +27,7 @@ module testbench_multiply ();
 		done  = '0;
 		#100;
 		mat_A[0][0] = 8'd2; mat_A[0][1] = 8'd2; mat_A[1][0] = 8'd2; mat_A[1][1] = 8'd2;
-		mat_B[0][0] = 8'd4; mat_B[0][1] = 8'd4; mat_B[1][0] = 8'd4; mat_B[1][1] = 8'd4;
+		mat_B[0][0] = 8'd128; mat_B[0][1] = 8'd128; mat_B[1][0] = 8'd128; mat_B[1][1] = 8'd128;
 		#100;
 		start=1;
 		#200;

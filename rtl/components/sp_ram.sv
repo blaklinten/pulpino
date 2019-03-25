@@ -22,7 +22,10 @@ module sp_ram
     input  logic [DATA_WIDTH-1:0]   wdata_i,
     output logic [DATA_WIDTH-1:0]   rdata_o,
     input  logic                    we_i,
-    input  logic [DATA_WIDTH/8-1:0] be_i
+    input  logic [DATA_WIDTH/8-1:0] be_i,
+    input  logic [3:0][7:0]         acc_in    [255:0],
+    output logic [3:0][7:0]         acc_out_A [255:0],
+    output logic [3:0][7:0]         acc_out_B [255:0]
   );
 
   localparam words = NUM_WORDS/(DATA_WIDTH/8);
@@ -36,6 +39,13 @@ module sp_ram
 
   assign addr = addr_i[ADDR_WIDTH-1:$clog2(DATA_WIDTH/8)];
 
+
+  always @(posedge clk)
+  begin
+    acc_out_A <= mem[0:255];
+    acc_out_B <= mem[256:511];
+    mem[512:767] <= acc_in;
+  end
 
   always @(posedge clk)
   begin

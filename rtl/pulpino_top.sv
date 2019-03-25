@@ -165,6 +165,11 @@ module pulpino_top
   //----------------------------------------------------------------------------//
   // Core region
   //----------------------------------------------------------------------------//
+
+  logic [3:0][7:0]         acc_in    [255:0];
+  logic [3:0][7:0]         acc_out_A [255:0];
+  logic [3:0][7:0]         acc_out_B [255:0];
+
   core_region
   #(
     .AXI_ADDR_WIDTH       ( `AXI_ADDR_WIDTH      ),
@@ -175,7 +180,11 @@ module pulpino_top
     .USE_ZERO_RISCY       (  USE_ZERO_RISCY      ),
     .RISCY_RV32F          (  RISCY_RV32F         ),
     .ZERO_RV32M           (  ZERO_RV32M          ),
-    .ZERO_RV32E           (  ZERO_RV32E          )
+    .ZERO_RV32E           (  ZERO_RV32E          ),
+    .acc_in               (  acc_in              ),
+    .acc_out_A            (  acc_out_A           ),
+    .acc_out_B            (  acc_out_B           )
+
   )
   core_region_i
   (
@@ -201,6 +210,9 @@ module pulpino_top
     .tdi_i          ( tdi_i             ),
     .tdo_o          ( tdo_o             )
   );
+  //----------------------------------------------------------------------------//
+  // Accelerator
+  //----------------------------------------------------------------------------//
 
   //----------------------------------------------------------------------------//
   // Peripherals
@@ -316,4 +328,3 @@ module pulpino_top
   );
 
 endmodule
-

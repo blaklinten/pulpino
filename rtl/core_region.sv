@@ -51,6 +51,10 @@ module core_region
     input  logic        tms_i,
     input  logic        tdi_i,
     output logic        tdo_o
+
+    input  logic [3:0][7:0]         acc_in    [255:0],
+    output logic [3:0][7:0]         acc_out_A [255:0],
+    output logic [3:0][7:0]         acc_out_B [255:0]
   );
 
   localparam INSTR_ADDR_WIDTH = $clog2(INSTR_RAM_SIZE)+1; // to make space for the boot rom
@@ -232,7 +236,223 @@ module core_region
 
       .instr_addr_o    ( core_instr_addr   ),
       .instr_req_o     ( core_instr_req    ),
-      .instr_rdata_i   ( core_instr_rdata  ),
+      .instr_rd_wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave     _wdata     ),
+
+    .slave       ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_  ( data_slave        )
+  );
+
+
+  ram_mux
+  #(
+    .ADDR_WIDTH ( DATA_ADDR_WIDTH ),
+    .IN0_WIDTH  ( AXI_DATA_WIDTH  ),
+    .IN1_WIDTH  ( 32              ),
+    .OUT_WIDTH  ( AXI_DATA_WIDTH  )
+  )
+  data_ram_mux_i
+  (
+    .clk            ( clk              ),
+    .rst_n          ( rst_n            ),
+
+    .port0_req_i    ( axi_mem_req      ),
+    .port0_gnt_o    (                  ),
+    .port0_rvalid_o (                  ),
+    .port0_addr_i   ( {axi_mem_addr[DATA_ADDR_WIDTH-AXI_B_WIDTH-1:0], {AXI_B_WIDTH{1'b0}}} ),
+    .port0_we_i     ( axi_mem_we       ),
+    .port0_be_i     ( axi_mem_be       ),
+    .port0_rdata_o  ( axi_ata_i   ( core_instr_rdata  ),
       .instr_gnt_i     ( core_instr_gnt    ),
       .instr_rvalid_i  ( core_instr_rvalid ),
 
@@ -488,7 +708,10 @@ module core_region
     .rdata_o      ( data_mem_rdata ),
     .we_i         ( data_mem_we    ),
     .be_i         ( data_mem_be    ),
-    .bypass_en_i  ( testmode_i     )
+    .bypass_en_i  ( testmode_i     ),
+    .acc_in       (acc_in          ),
+    .acc_out_A    (acc_out_A       ),
+    .acc_out_B    (acc_out_B       )
   );
 
   axi_mem_if_SP_wrap
