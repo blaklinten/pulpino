@@ -21,6 +21,8 @@ module testbench_multiply ();
 		mat_A <= '{default:0};
 		mat_B <= '{default:0};
 		mat_C <= '{default:0};
+		mat_C[0][0] = 8'd0; mat_C[0][1] = 8'd0; mat_C[1][0] = 8'd0; mat_C[1][1] = 8'd0;
+		$display("%b",mat_C[0][0]);
 		start = '0;
 		done  = '0;
 		#100;
