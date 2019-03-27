@@ -166,9 +166,9 @@ module pulpino_top
   // Core region
   //----------------------------------------------------------------------------//
 
-  logic [3:0][7:0]         acc_in    [255:0];
-  logic [3:0][7:0]         acc_out_A [255:0];
-  logic [3:0][7:0]         acc_out_B [255:0];
+  logic [3:0][7:0]         acc_out  [255:0];
+  logic [3:0][7:0]         acc_in_A [255:0];
+  logic [3:0][7:0]         acc_in_B [255:0];
 
   core_region
   #(
@@ -206,13 +206,25 @@ module pulpino_top
     .tms_i          ( tms_i             ),
     .tdi_i          ( tdi_i             ),
     .tdo_o          ( tdo_o             ),
-    .acc_in               (  acc_in              ),
-    .acc_out_A            (  acc_out_A           ),
-    .acc_out_B            (  acc_out_B           )
+    .acc_out        ( acc_out           ),
+    .acc_in_A       ( acc_in_A          ),
+    .acc_in_B       ( acc_in_B          )
   );
   //----------------------------------------------------------------------------//
   // Accelerator
   //----------------------------------------------------------------------------//
+  top_acc
+    #(
+      .dat_size  ( 8 ),
+      .mat_size  ( 2 )
+    )
+  top_acc_i
+  (
+    .acc_out        ( acc_out           ),
+    .acc_in_A       ( acc_in_A          ),
+    .acc_in_B       ( acc_in_B          )
+  );
+    
 
   //----------------------------------------------------------------------------//
   // Peripherals

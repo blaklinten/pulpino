@@ -2,6 +2,7 @@ set RTL ../../rtl
 set IPS ../../ips
 set FPGA_IPS ../ips
 set FPGA_RTL ../rtl
+set ACC ../../acc
 
 # components
 set SRC_COMPONENTS " \
@@ -35,5 +36,7 @@ set SRC_PULPINO " \
    $RTL/pulpino_top.sv \
    $RTL/clk_rst_gen.sv \
    $FPGA_RTL/pulpino_wrap.v \
+   $ACC/top_acc.sv \
+   $ACC/multiply2.sv \
 "
 

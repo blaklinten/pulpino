@@ -52,9 +52,9 @@ module core_region
     input  logic        tdi_i,
     output logic        tdo_o,
 
-    input  logic [3:0][7:0]         acc_in    [255:0],
-    output logic [3:0][7:0]         acc_out_A [255:0],
-    output logic [3:0][7:0]         acc_out_B [255:0]
+    input  logic [3:0][7:0]         acc_out    [255:0],
+    output logic [3:0][7:0]         acc_in_A [255:0],
+    output logic [3:0][7:0]         acc_in_B [255:0]
   );
 
   localparam INSTR_ADDR_WIDTH = $clog2(INSTR_RAM_SIZE)+1; // to make space for the boot rom
@@ -493,9 +493,9 @@ module core_region
     .we_i         ( data_mem_we    ),
     .be_i         ( data_mem_be    ),
     .bypass_en_i  ( testmode_i     ),
-    .acc_in       (acc_in          ),
-    .acc_out_A    (acc_out_A       ),
-    .acc_out_B    (acc_out_B       )
+    .acc_out      ( acc_out        ),
+    .acc_in_A     ( acc_in_A       ),
+    .acc_in_B     ( acc_in_B       )
   );
 
   axi_mem_if_SP_wrap
