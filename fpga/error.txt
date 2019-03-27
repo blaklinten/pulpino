@@ -4,9 +4,3 @@ ERROR: [Synth 8-285] failed synthesizing module 'instr_ram_wrap' [/home/blaklint
 ERROR: [Synth 8-285] failed synthesizing module 'core_region' [/home/blaklinten/PULP/pulpino/rtl/core_region.sv:15]
 ERROR: [Synth 8-285] failed synthesizing module 'pulpino_top' [/home/blaklinten/PULP/pulpino/rtl/pulpino_top.sv:20]
 ERROR: [Synth 8-285] failed synthesizing module 'pulpino' [/home/blaklinten/PULP/pulpino/fpga/rtl/pulpino_wrap.v:11]
-ERROR: [Synth 8-439] module 'top_acc' not found [/home/blaklinten/PULP/pulpino/rtl/pulpino_top.sv:221]
-ERROR: [Synth 8-285] failed synthesizing module 'pulpino_top' [/home/blaklinten/PULP/pulpino/rtl/pulpino_top.sv:20]
-ERROR: [Synth 8-285] failed synthesizing module 'pulpino' [/home/blaklinten/PULP/pulpino/fpga/rtl/pulpino_wrap.v:11]
-ERROR: [Vivado_Tcl 4-5] Elaboration failed - please see the console for details
-make[1]: *** [Makefile:5: all] Error 1
-make: *** [Makefile:39: pulpino/pulpino.edf] Error 2

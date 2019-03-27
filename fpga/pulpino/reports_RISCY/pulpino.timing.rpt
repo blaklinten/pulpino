@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.1 (lin64) Build 1215546 Mon Apr 27 19:07:21 MDT 2015
-| Date         : Tue Mar 26 09:04:29 2019
+| Date         : Wed Mar 27 15:23:19 2019
 | Host         : E7240 running 64-bit Debian GNU/Linux buster/sid
 | Command      : report_timing -nworst 1 -delay_type max -sort_by group -file reports_RISCY/pulpino.timing.rpt
 | Design       : pulpino
@@ -11,16 +11,16 @@ Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 
 Timing Report
 
-Slack (MET) :             12.690ns  (required time - arrival time)
-  Source:                 pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/operation_reg[0]/C
+Slack (MET) :             12.348ns  (required time - arrival time)
+  Source:                 pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/word_count_reg[3]/C
                             (rising edge-triggered cell FDCE clocked by tck  {rise@0.000ns fall@20.000ns period=40.000ns})
   Destination:            pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/tdo_pad_o_reg/D
                             (falling edge-triggered cell FDCE clocked by tck  {rise@0.000ns fall@20.000ns period=40.000ns})
   Path Group:             tck
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            20.000ns  (tck fall@20.000ns - tck rise@0.000ns)
-  Data Path Delay:        7.282ns  (logic 1.881ns (25.831%)  route 5.401ns (74.169%))
-  Logic Levels:           10  (LUT4=3 LUT5=2 LUT6=5)
+  Data Path Delay:        7.624ns  (logic 2.296ns (30.115%)  route 5.328ns (69.885%))
+  Logic Levels:           11  (LUT3=1 LUT4=2 LUT5=1 LUT6=6 MUXF7=1)
   Clock Path Skew:        -0.040ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    2.399ns = ( 22.399 - 20.000 ) 
     Source Clock Delay      (SCD):    2.622ns
@@ -39,31 +39,33 @@ Slack (MET) :             12.690ns  (required time - arrival time)
                          IBUF (Prop_ibuf_I_O)         0.921     0.921 r  tck_i_IBUF_inst/O
                          net (fo=1, unplaced)         0.800     1.721    tck_i_IBUF
                          BUFG (Prop_bufg_I_O)         0.101     1.822 r  tck_i_IBUF_BUFG_inst/O
-                         net (fo=411, unplaced)       0.800     2.622    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/tck_i
-                         FDCE                                         r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/operation_reg[0]/C
+                         net (fo=411, unplaced)       0.800     2.622    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/tck_i
+                         FDCE                                         r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/word_count_reg[3]/C
   -------------------------------------------------------------------    -------------------
-                         FDCE (Prop_fdce_C_Q)         0.478     3.100 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/operation_reg[0]/Q
-                         net (fo=30, unplaced)        0.811     3.911    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/operation_reg[3][0]
-                         LUT4 (Prop_lut4_I1_O)        0.295     4.206 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/data_out_shift_reg[32]_i_10/O
-                         net (fo=2, unplaced)         0.460     4.666    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/data_out_shift_reg[32]_i_10_n_0
-                         LUT6 (Prop_lut6_I2_O)        0.124     4.790 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/data_out_shift_reg[32]_i_9/O
-                         net (fo=1, unplaced)         0.449     5.239    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/data_out_shift_reg[32]_i_9_n_0
-                         LUT6 (Prop_lut6_I0_O)        0.124     5.363 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/data_out_shift_reg[32]_i_8/O
-                         net (fo=11, unplaced)        0.495     5.858    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/word_count_reg_0__s_net_1
-                         LUT6 (Prop_lut6_I1_O)        0.124     5.982 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_crc_i/operation[3]_i_11/O
-                         net (fo=1, unplaced)         0.449     6.431    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/FSM_sequential_module_state_reg[3]_3
-                         LUT5 (Prop_lut5_I4_O)        0.124     6.555 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/operation[3]_i_4/O
-                         net (fo=5, unplaced)         0.930     7.485    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/operation[3]_i_4_n_0
-                         LUT4 (Prop_lut4_I1_O)        0.116     7.601 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/tdo_pad_o_i_24/O
-                         net (fo=2, unplaced)         0.460     8.061    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/tdo_pad_o_i_24_n_0
-                         LUT5 (Prop_lut5_I0_O)        0.124     8.185 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/tdo_pad_o_i_15/O
-                         net (fo=1, unplaced)         0.449     8.634    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/tdo_output_sel[0]
-                         LUT6 (Prop_lut6_I2_O)        0.124     8.758 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_axi/axi_biu_i/tdo_pad_o_i_10/O
-                         net (fo=1, unplaced)         0.449     9.207    pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/crc_reg[0]
-                         LUT4 (Prop_lut4_I3_O)        0.124     9.331 r  pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/tdo_pad_o_i_4/O
-                         net (fo=1, unplaced)         0.449     9.780    pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/tdo_pad_o_i_4_n_0
-                         LUT6 (Prop_lut6_I1_O)        0.124     9.904 r  pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/tdo_pad_o_i_1/O
-                         net (fo=1, unplaced)         0.000     9.904    pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/tdo_pad_o_i_1_n_0
+                         FDCE (Prop_fdce_C_Q)         0.478     3.100 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/word_count_reg[3]/Q
+                         net (fo=3, unplaced)         0.759     3.859    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/word_count_reg[2]
+                         LUT4 (Prop_lut4_I1_O)        0.295     4.154 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/rdy_o_i_7/O
+                         net (fo=2, unplaced)         0.460     4.614    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/str_sync_reg
+                         LUT5 (Prop_lut5_I4_O)        0.124     4.738 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/FSM_sequential_module_state[2]_i_7__0/O
+                         net (fo=1, unplaced)         0.449     5.187    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/FSM_sequential_module_state[2]_i_7__0_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124     5.311 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/FSM_sequential_module_state[2]_i_4__0/O
+                         net (fo=12, unplaced)        0.497     5.808    pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/word_count_reg[0]_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     5.932 f  pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/bit_count[5]_i_18/O
+                         net (fo=1, unplaced)         0.449     6.381    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/FSM_sequential_TAP_state_reg[1]_1
+                         LUT6 (Prop_lut6_I3_O)        0.124     6.505 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/bit_count[5]_i_10/O
+                         net (fo=1, unplaced)         0.000     6.505    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_biu_i/FSM_sequential_module_state_reg[1]_0
+                         MUXF7 (Prop_muxf7_I0_O)      0.241     6.746 f  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_biu_i/bit_count_reg[5]_i_6/O
+                         net (fo=6, unplaced)         0.937     7.683    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_biu_i_n_0
+                         LUT4 (Prop_lut4_I1_O)        0.290     7.973 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/tdo_pad_o_i_24/O
+                         net (fo=1, unplaced)         0.449     8.422    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_biu_i/FSM_sequential_module_state_reg[0]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     8.546 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_biu_i/tdo_pad_o_i_14/O
+                         net (fo=2, unplaced)         0.430     8.976    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/tdo_output_sel[1]
+                         LUT3 (Prop_lut3_I1_O)        0.124     9.100 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/tdo_pad_o_i_10/O
+                         net (fo=1, unplaced)         0.449     9.549    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/tdo_pad_o_i_10_n_0
+                         LUT6 (Prop_lut6_I4_O)        0.124     9.673 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_crc_i/tdo_pad_o_i_3/O
+                         net (fo=1, unplaced)         0.449    10.122    pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_biu_i/jtag_ir_reg[0]
+                         LUT6 (Prop_lut6_I0_O)        0.124    10.246 r  pulpino_i/core_region_i/adv_dbg_if_i/dbg_module_i/i_dbg_cpu_or1k/or1k_biu_i/tdo_pad_o_i_1/O
+                         net (fo=1, unplaced)         0.000    10.246    pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/jtag_ir_reg[0]_0
                          FDCE                                         r  pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/tdo_pad_o_reg/D
   -------------------------------------------------------------------    -------------------
 
@@ -80,9 +82,9 @@ Slack (MET) :             12.690ns  (required time - arrival time)
                          FDCE (Setup_fdce_C_D)        0.047    22.594    pulpino_i/core_region_i/adv_dbg_if_i/cluster_tap_i/tdo_pad_o_reg
   -------------------------------------------------------------------
                          required time                         22.594    
-                         arrival time                          -9.904    
+                         arrival time                         -10.246    
   -------------------------------------------------------------------
-                         slack                                 12.690    
+                         slack                                 12.348    
 
 Slack (MET) :             16.773ns  (required time - arrival time)
   Source:                 pulpino_i/peripherals_i/axi_spi_slave_i/axi_spi_slave_i/u_txreg/counter_reg[1]/C
