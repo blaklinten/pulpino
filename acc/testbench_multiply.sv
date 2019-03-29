@@ -8,7 +8,7 @@ module testbench_multiply ();
 	logic                     done        ;
 	logic                     clk         ;
 
-	multiply2 mult (
+	multiply_long mult (
 		.clk  (clk  ),
 		.start(start),
 		.mat_A(mat_A),

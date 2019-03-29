@@ -1,6 +1,0 @@
-ERROR: [Synth 8-439] module 'xilinx_mem_8192x32' not found [/home/blaklinten/PULP/pulpino/rtl/sp_ram_wrap.sv:36]
-ERROR: [Synth 8-285] failed synthesizing module 'sp_ram_wrap' [/home/blaklinten/PULP/pulpino/rtl/sp_ram_wrap.sv:13]
-ERROR: [Synth 8-285] failed synthesizing module 'instr_ram_wrap' [/home/blaklinten/PULP/pulpino/rtl/instr_ram_wrap.sv:14]
-ERROR: [Synth 8-285] failed synthesizing module 'core_region' [/home/blaklinten/PULP/pulpino/rtl/core_region.sv:15]
-ERROR: [Synth 8-285] failed synthesizing module 'pulpino_top' [/home/blaklinten/PULP/pulpino/rtl/pulpino_top.sv:20]
-ERROR: [Synth 8-285] failed synthesizing module 'pulpino' [/home/blaklinten/PULP/pulpino/fpga/rtl/pulpino_wrap.v:11]
