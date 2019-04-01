@@ -169,6 +169,7 @@ module pulpino_top
   logic [3:0][7:0]         acc_out  [255:0];
   logic [3:0][7:0]         acc_in_A [255:0];
   logic [3:0][7:0]         acc_in_B [255:0];
+  logic                    start;
 
   core_region
   #(
@@ -208,7 +209,8 @@ module pulpino_top
     .tdo_o          ( tdo_o             ),
     .acc_out        ( acc_out           ),
     .acc_in_A       ( acc_in_A          ),
-    .acc_in_B       ( acc_in_B          )
+    .acc_in_B       ( acc_in_B          ),
+    .start          ( start             )
   );
   //----------------------------------------------------------------------------//
   // Accelerator
@@ -222,7 +224,8 @@ module pulpino_top
   (
     .acc_out        ( acc_out           ),
     .acc_in_A       ( acc_in_A          ),
-    .acc_in_B       ( acc_in_B          )
+    .acc_in_B       ( acc_in_B          ),
+    .start          (start              ) 
   );
     
 

@@ -12,6 +12,7 @@ module multiply_long #(
 
   always @(posedge clk)
   begin
+    if(start) begin
     mat_C[0][0] <=
                 mat_A[0][0] * mat_B[0][0] +
                 mat_A[0][1] * mat_B[8][0] +
@@ -33805,4 +33806,5 @@ module multiply_long #(
                 mat_A[255][2] * mat_B[247][3] +
                 mat_A[255][3] * mat_B[255][3];
                   end
+              end
 endmodule

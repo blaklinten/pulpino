@@ -54,7 +54,8 @@ module core_region
 
     input  logic [3:0][7:0]         acc_out    [255:0],
     output logic [3:0][7:0]         acc_in_A [255:0],
-    output logic [3:0][7:0]         acc_in_B [255:0]
+    output logic [3:0][7:0]         acc_in_B [255:0],
+    output logic                    start
   );
 
   localparam INSTR_ADDR_WIDTH = $clog2(INSTR_RAM_SIZE)+1; // to make space for the boot rom
@@ -495,7 +496,8 @@ module core_region
     .bypass_en_i  ( testmode_i     ),
     .acc_out      ( acc_out        ),
     .acc_in_A     ( acc_in_A       ),
-    .acc_in_B     ( acc_in_B       )
+    .acc_in_B     ( acc_in_B       ),
+    .start        (start           )
   );
 
   axi_mem_if_SP_wrap
