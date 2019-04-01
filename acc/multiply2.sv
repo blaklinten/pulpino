@@ -12,6 +12,7 @@ module multiply2 #(
 
   int i, j, k,l,m,n;
   int w = 0;
+  int sec;
 
   logic [dat_size-1:0] temp_C[mat_size-1:0][mat_size-1:0] = '{'{8'h00, 8'h00},'{8'h00, 8'h00}};
   logic [dat_size-1:0] temp_A[mat_size-1:0][mat_size-1:0]                                     ;
@@ -40,18 +41,19 @@ module multiply2 #(
       end 
     end 
     w=0;
-    for(int row = 0; row < mat_size; row++) begin
-      for(int kol =0; kol < mat_size;kol++)
-        if(kol%4==0){
-          w++
-          sec=0
-        }
-        mat_C[row][kol] = temp_C[w][sec];
-        sec++
-      end
-    end
+    sec=0;
+    // for(int row = 0; row < mat_size; row++) begin
+    //   for(int kol =0; kol < mat_size;kol++)
+    //     if(kol%4==0){
+    //       w++;
+    //       sec=0;
+    //     }
+    //     mat_C[row][kol] = temp_C[w][sec];
+    //     sec++;
+    //   end
+    // end
 
-        w++
+    //     w++;
   done  = 1;
   end
 endmodule

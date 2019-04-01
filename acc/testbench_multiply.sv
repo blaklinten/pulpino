@@ -22,20 +22,22 @@ module testbench_multiply ();
 		mat_B <= '{default:0};
 		mat_C <= '{default:0};
 
-		//mat_C[0][0] = 8'd0; mat_C[0][1] = 8'd0; mat_C[1][0] = 8'd0; mat_C[1][1] = 8'd0;
-		//$display("%b",mat_C[0][0]);
-
-		start = '0;
-		done  = '0;
+		clk = 0;
 		#100;
-		mat_A[0][0] = 8'd2; mat_A[0][1] = 8'd2; mat_A[0][2] = 8'd2; mat_A[0][3] = 8'd2;
-		mat_B[0][0] = 8'd4; mat_B[0][1] = 8'd4; mat_B[0][2] = 8'd4; mat_B[0][3] = 8'd4;
+		// mat_A[0][0] = 8'd2; mat_A[0][1] = 8'd2; mat_A[0][2] = 8'd2; mat_A[0][3] = 8'd2;
+		// mat_B[0][0] = 8'd4; mat_B[0][1] = 8'd4; mat_B[0][2] = 8'd4; mat_B[0][3] = 8'd4;
+		mat_A <= '{default:2};
+		mat_B <= '{default:3};
 		#100;
-		start=1;
+		clk='b1;
 		#200;
+		clk='b0;
 		$display("%p",mat_C[0][0]);
 		$display("%p",mat_C[0][1]);
 		$display("%p",mat_C[0][2]);
 		$display("%p",mat_C[0][3]);
+		#100;
+		clk='b1;
+		#100;
 	end
 endmodule // testbench_multiply
