@@ -11,7 +11,7 @@ void
 placeDataInMemory(struct Matrises *matrix)
 {
   // Start at address 0x100001
-  unsigned int addr = DATA_RAM_BASE_ADDR + 1;
+  unsigned int addr = DATA_RAM_BASE_ADDR + 1000;
 
   // Place out matrixA
   
@@ -23,7 +23,6 @@ placeDataInMemory(struct Matrises *matrix)
 	  addr++;
 	}
     }
-  /*
   // Place out matrixB
   for(int y = 0; y < MATRIX_ELEMENT; y++)
     {
@@ -33,7 +32,6 @@ placeDataInMemory(struct Matrises *matrix)
 	  addr++;
 	}
     }
-  */
 }
 
 // Print the data that the accelerator have calculated

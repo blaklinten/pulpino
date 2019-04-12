@@ -26,6 +26,7 @@ printHelp()
 int
 main(int argc, char *argv[])
 {
+  char* Done = "Done!\n";
   struct Matrises matrix;
 
   getFromFile(&matrix);
@@ -37,13 +38,13 @@ main(int argc, char *argv[])
   // runAccelerator();
   
   // Print out the resulting data from memory
-  printOutData(0x1);
+  printOutData(1000);
   //printOutData(0x401);
   //printOutData(0x801);
 
   //testGetData();
 
-  printf("Done!\n");
+  printf("%s", Done);
   
   return 0;
 }
