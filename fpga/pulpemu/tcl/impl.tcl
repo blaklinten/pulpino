@@ -193,11 +193,14 @@ if {[string equal $::env(BOARD) "zybo"]} {
   # ----------------------------------------------------------------------------
   # P-MOD for JTAG Access - Bank 13
   # ----------------------------------------------------------------------------
-  set_property PACKAGE_PIN Y11  [get_ports {ext_tdi_i}];     # "P-MOD: JA1"
-  set_property PACKAGE_PIN AA11 [get_ports {ext_tms_i}];     # "P-MOD: JA2"
-  set_property PACKAGE_PIN Y10  [get_ports {ext_tck_i}];     # "P-MOD: JA3"
-  set_property PACKAGE_PIN AA9  [get_ports {ext_tdo_o}];     # "P-MOD: JA4"
-  set_property PACKAGE_PIN AB11 [get_ports {ext_trstn_i}];   # "P-MOD: JA7"
+  
+  #Adams ändringar - kommenterat ut raderna nedan
+
+  #set_property PACKAGE_PIN Y11  [get_ports {ext_tdi_i}];     # "P-MOD: JA1"
+  #set_property PACKAGE_PIN AA11 [get_ports {ext_tms_i}];     # "P-MOD: JA2"
+  #set_property PACKAGE_PIN Y10  [get_ports {ext_tck_i}];     # "P-MOD: JA3"
+  #set_property PACKAGE_PIN AA9  [get_ports {ext_tdo_o}];     # "P-MOD: JA4"
+  #set_property PACKAGE_PIN AB11 [get_ports {ext_trstn_i}];   # "P-MOD: JA7"
 
   set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets ext_tck_i_IBUF]
 
@@ -222,10 +225,36 @@ if {[string equal $::env(BOARD) "zybo"]} {
   set_property PACKAGE_PIN H17 [get_ports {sw_i[6]}];  # "SW6"
   set_property PACKAGE_PIN M15 [get_ports {sw_i[7]}];  # "SW7"
 
+
+#Adams ändringar. Om det ska tas bort så glöm inte att avkommentera jtag-interfacet ovan(fast jag tror inte vi behöver det)
+
+set_property PACKAGE_PIN Y11  [get_ports {mat_A[0][0][0]}];  # "JA1"
+set_property PACKAGE_PIN AA8  [get_ports {mat_A[0][0][1]}];  # "JA10"
+set_property PACKAGE_PIN AA11 [get_ports {mat_A[0][0][2]}];  # "JA2"
+set_property PACKAGE_PIN Y10  [get_ports {mat_A[0][0][3]}];  # "JA3"
+set_property PACKAGE_PIN AA9  [get_ports {mat_A[0][0][4]}];  # "JA4"
+set_property PACKAGE_PIN AB11 [get_ports {mat_A[0][0][5]}];  # "JA7"
+set_property PACKAGE_PIN AB10 [get_ports {mat_A[0][0][6]}];  # "JA8"
+set_property PACKAGE_PIN AB9  [get_ports {mat_A[0][0][7]}];  # "JA9"
+
+set_property PACKAGE_PIN W12 [get_ports {mat_C[0][0][0]}];  # "JB1"
+set_property PACKAGE_PIN W11 [get_ports {mat_C[0][0][1]}];  # "JB2"
+set_property PACKAGE_PIN V10 [get_ports {mat_C[0][0][2]}];  # "JB3"
+set_property PACKAGE_PIN W8 [get_ports {mat_C[0][0][3]}];  # "JB4"
+set_property PACKAGE_PIN V12 [get_ports {mat_C[0][0][4]}];  # "JB7"
+set_property PACKAGE_PIN W10 [get_ports {mat_C[0][0][5]}];  # "JB8"
+set_property PACKAGE_PIN V9 [get_ports {mat_C[0][0][6]}];  # "JB9"
+set_property PACKAGE_PIN V8 [get_ports {mat_C[0][0][7]}];  # "JB10"
+
+#/Adams ändringar
+
+
   set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 33]];
   set_property IOSTANDARD LVCMOS18 [get_ports -of_objects [get_iobanks 34]];
   set_property IOSTANDARD LVCMOS18 [get_ports -of_objects [get_iobanks 35]];
   set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 13]];
+
+
 }
 
 
