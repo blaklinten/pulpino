@@ -15,6 +15,7 @@ set SRC_COMPONENTS " \
    $RTL/components/pulp_clock_mux2.sv \
    $RTL/components/generic_fifo.sv \
    $RTL/components/sp_ram.sv \
+   $RTL/components/sp_ram_instr.sv \
 "
 
 # pulpino
@@ -29,6 +30,7 @@ set SRC_PULPINO " \
    $RTL/core_region.sv \
    $RTL/instr_ram_wrap.sv \
    $RTL/sp_ram_wrap.sv \
+   $RTL/sp_ram_wrap_instr.sv \
    $RTL/boot_code.sv \
    $RTL/boot_rom_wrap.sv \
    $RTL/peripherals.sv \
@@ -39,5 +41,6 @@ set SRC_PULPINO " \
    $ACC/top_acc.sv \
    $ACC/multiply2.sv \
    $ACC/multiply_long.sv \
+
 "
 
