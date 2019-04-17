@@ -48,23 +48,20 @@ module sp_ram_wrap #(
   );
 
   data_to_acc data_to_acc_i (
-    .addr     (addr_i       ),
-    .data_in  (acc_data_in  ),
-    .data_out (acc_data_out),
-    //lös dessasa sen
-    .mat_A_out(             ),
-    .mat_B_out(             ),
-    .mat_C_in (             )
+    .addr    (addr_i      ),
+    .data_in (acc_data_in ),
+    .data_out(acc_data_out),
+    .clk     (clk         )
   );
 
 
-  if(addr_i< 32'h00100400 & addr_i>32'h00100C00) begin
+  if(addr_i> 32'h00100400 & addr_i<32'h00100C00) begin
     assign rdata_o = acc_data_out;
     assign acc_data_in = wdata_i;
   end
   else begin
     assign rdata_o = mem_read;
-    assign mem_write =wdata_i;
+    assign mem_write = wdata_i;
   end
 
 
@@ -74,4 +71,4 @@ module sp_ram_wrap #(
 
 
 
-  endmodule
+endmodule
