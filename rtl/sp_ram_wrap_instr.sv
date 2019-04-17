@@ -10,7 +10,7 @@
 
 `include "config.sv"
 
-module sp_ram_wrap
+module sp_ram_wrap_instr
   #(
     parameter RAM_SIZE   = 32768,              // in bytes
     parameter ADDR_WIDTH = $clog2(RAM_SIZE),
@@ -25,11 +25,7 @@ module sp_ram_wrap
     output logic [DATA_WIDTH-1:0]   rdata_o,
     input  logic                    we_i,
     input  logic [DATA_WIDTH/8-1:0] be_i,
-    input  logic                    bypass_en_i,
-    input  logic [3:0][7:0]         acc_out    [255:0],
-    output logic [3:0][7:0]         acc_in_A   [255:0],
-    output logic [3:0][7:0]         acc_in_B   [255:0],
-    output logic                    start
+    input  logic                    bypass_en_i
   );
 
 `ifdef PULP_FPGA_EMUL
@@ -88,11 +84,7 @@ module sp_ram_wrap
     .wdata_i ( wdata_i   ),
     .rdata_o ( rdata_o   ),
     .we_i    ( we_i      ),
-    .be_i    ( be_i      ),
-    .acc_out ( acc_out   ),
-    .acc_in_A( acc_in_A  ),
-    .acc_in_B( acc_in_B  ),
-    .start  (  start     ),
+    .be_i    ( be_i      )
   );
 `endif
 

@@ -497,7 +497,8 @@ module core_region
     .acc_out      ( acc_out        ),
     .acc_in_A     ( acc_in_A       ),
     .acc_in_B     ( acc_in_B       ),
-    .start        (start           )
+    .start        (start         ),
+    .clk          (clk)
   );
 
   axi_mem_if_SP_wrap

@@ -10,90 +10,68 @@
 
 `include "config.sv"
 
-module sp_ram_wrap
-  #(
-    parameter RAM_SIZE   = 32768,              // in bytes
-    parameter ADDR_WIDTH = $clog2(RAM_SIZE),
-    parameter DATA_WIDTH = 32
-  )(
-    // Clock and Reset
-    input  logic                    clk,
-    input  logic                    rstn_i,
-    input  logic                    en_i,
-    input  logic [ADDR_WIDTH-1:0]   addr_i,
-    input  logic [DATA_WIDTH-1:0]   wdata_i,
-    output logic [DATA_WIDTH-1:0]   rdata_o,
-    input  logic                    we_i,
-    input  logic [DATA_WIDTH/8-1:0] be_i,
-    input  logic                    bypass_en_i,
-    input  logic [3:0][7:0]         acc_out    [255:0],
-    output logic [3:0][7:0]         acc_in_A   [255:0],
-    output logic [3:0][7:0]         acc_in_B   [255:0],
-    output logic                    start
+module sp_ram_wrap #(
+  parameter RAM_SIZE   = 32768           , // in bytes
+  parameter ADDR_WIDTH = $clog2(RAM_SIZE),
+  parameter DATA_WIDTH = 32
+) (
+  // Clock and Reset
+  input  logic                         clk               ,
+  input  logic                         rstn_i            ,
+  input  logic                         en_i              ,
+  input  logic [  ADDR_WIDTH-1:0]      addr_i            ,
+  input  logic [  DATA_WIDTH-1:0]      wdata_i           ,
+  output logic [  DATA_WIDTH-1:0]      rdata_o           ,
+  input  logic                         we_i              ,
+  input  logic [DATA_WIDTH/8-1:0]      be_i              ,
+  input  logic                         bypass_en_i       ,
+  input  logic [             3:0][7:0] acc_out    [255:0],
+  output logic [             3:0][7:0] acc_in_A   [255:0],
+  output logic [             3:0][7:0] acc_in_B   [255:0],
+  output logic                         start
+);
+
+  logic mem_read    [DATA_WIDTH-1:0];
+  logic mem_write   [DATA_WIDTH-1:0];
+  logic acc_data_out[DATA_WIDTH-1:0];
+  logic acc_data_in [DATA_WIDTH-1:0];
+
+  xilinx_mem_8192x32 sp_ram_i (
+    .clka (clk                   ),
+    .rsta (1'b0                  ), // reset is active high
+    
+    .ena  (en_i                  ),
+    .addra(addr_i[ADDR_WIDTH-1:2]),
+    .dina (mem_write             ),
+    .douta(mem_read              ),
+    .wea  (be_i & {4{we_i}}      )
   );
 
-`ifdef PULP_FPGA_EMUL
-  xilinx_mem_8192x32
-  sp_ram_i
-  (
-    .clka   ( clk                    ),
-    .rsta   ( 1'b0                   ), // reset is active high
-
-    .ena    ( en_i                   ),
-    .addra  ( addr_i[ADDR_WIDTH-1:2] ),
-    .dina   ( wdata_i                ),
-    .douta  ( rdata_o                ),
-    .wea    ( be_i & {4{we_i}}       )
+  data_to_acc data_to_acc_i (
+    .addr     (addr_i       ),
+    .data_in  (acc_data_in  ),
+    .data_out (acc_data_out),
+    //lös dessasa sen
+    .mat_A_out(             ),
+    .mat_B_out(             ),
+    .mat_C_in (             )
   );
 
-  // TODO: we should kill synthesis when the ram size is larger than what we
-  // have here
 
-`elsif ASIC
-   // RAM bypass logic
-   logic [31:0] ram_out_int;
-   // assign rdata_o = (bypass_en_i) ? wdata_i : ram_out_int;
-   assign rdata_o = ram_out_int;
+  if(addr_i< 32'h00100400 & addr_i>32'h00100C00) begin
+    assign rdata_o = acc_data_out;
+    assign acc_data_in = wdata_i;
+  end
+  else begin
+    assign rdata_o = mem_read;
+    assign mem_write =wdata_i;
+  end
 
-   sp_ram_bank
-   #(
-    .NUM_BANKS  ( RAM_SIZE/4096 ),
-    .BANK_SIZE  ( 1024          )
-   )
-   sp_ram_bank_i
-   (
-    .clk_i   ( clk                     ),
-    .rstn_i  ( rstn_i                  ),
-    .en_i    ( en_i                    ),
-    .addr_i  ( addr_i                  ),
-    .wdata_i ( wdata_i                 ),
-    .rdata_o ( ram_out_int             ),
-    .we_i    ( (we_i & ~bypass_en_i)   ),
-    .be_i    ( be_i                    )
-   );
 
-`else
-  sp_ram
-  #(
-    .ADDR_WIDTH ( ADDR_WIDTH ),
-    .DATA_WIDTH ( DATA_WIDTH ),
-    .NUM_WORDS  ( RAM_SIZE   )
-  )
-  sp_ram_i
-  (
-    .clk     ( clk       ),
 
-    .en_i    ( en_i      ),
-    .addr_i  ( addr_i    ),
-    .wdata_i ( wdata_i   ),
-    .rdata_o ( rdata_o   ),
-    .we_i    ( we_i      ),
-    .be_i    ( be_i      ),
-    .acc_out ( acc_out   ),
-    .acc_in_A( acc_in_A  ),
-    .acc_in_B( acc_in_B  ),
-    .start  (  start     ),
-  );
-`endif
 
-endmodule
+
+
+
+
+  endmodule

@@ -54,10 +54,7 @@ module instr_ram_wrap
     .rdata_o     ( rdata_ram                  ),
     .we_i        ( we_i                       ),
     .be_i        ( be_i                       ),
-    .bypass_en_i ( bypass_en_i                ),
-    .acc_out (),
-    .acc_in_A (),
-    .acc_in_B ()
+    .bypass_en_i ( bypass_en_i                )
   );
 
   boot_rom_wrap
