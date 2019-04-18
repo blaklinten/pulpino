@@ -8,31 +8,29 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
-module sp_ram
-  #(
-    parameter ADDR_WIDTH = 8,
-    parameter DATA_WIDTH = 32,
-    parameter NUM_WORDS  = 256
-  )(
-    // Clock and Reset
-    input  logic                    clk,
-
-    input  logic                    en_i,
-    input  logic [ADDR_WIDTH-1:0]   addr_i,
-    input  logic [DATA_WIDTH-1:0]   wdata_i,
-    output logic [DATA_WIDTH-1:0]   rdata_o,
-    input  logic                    we_i,
-    input  logic [DATA_WIDTH/8-1:0] be_i,
-    input  logic [3:0][7:0]         acc_out    [255:0],
-    output logic [3:0][7:0]         acc_in_A [255:0],
-    output logic [3:0][7:0]         acc_in_B [255:0]
-  );
+module sp_ram #(
+  parameter ADDR_WIDTH = 8  ,
+  parameter DATA_WIDTH = 32 ,
+  parameter NUM_WORDS  = 256
+) (
+  // Clock and Reset
+  input  logic                         clk               ,
+  input  logic                         en_i              ,
+  input  logic [  ADDR_WIDTH-1:0]      addr_i            ,
+  input  logic [  DATA_WIDTH-1:0]      wdata_i           ,
+  output logic [  DATA_WIDTH-1:0]      rdata_o           ,
+  input  logic                         we_i              ,
+  input  logic [DATA_WIDTH/8-1:0]      be_i              ,
+  input  logic [             3:0][7:0] acc_out    [255:0],
+  output logic [             3:0][7:0] acc_in_A [255:0]  ,
+  output logic [             3:0][7:0] acc_in_B [255:0]
+);
 
   localparam words = NUM_WORDS/(DATA_WIDTH/8);
 
-  logic [DATA_WIDTH/8-1:0][7:0] mem[words];
-  logic [DATA_WIDTH/8-1:0][7:0] wdata;
-  logic [ADDR_WIDTH-1-$clog2(DATA_WIDTH/8):0] addr;
+  logic [                   DATA_WIDTH/8-1:0][7:0] mem  [words];
+  logic [                   DATA_WIDTH/8-1:0][7:0] wdata       ;
+  logic [ADDR_WIDTH-1-$clog2(DATA_WIDTH/8):0]      addr        ;
 
   integer i;
 
@@ -41,24 +39,24 @@ module sp_ram
 
 
   always @(posedge clk)
-  begin
-    acc_in_A <= mem[0:255];
-    acc_in_B <= mem[256:511];
-    mem[512:767] <= acc_out;
-  end
-
-  always @(posedge clk)
-  begin
-    if (en_i && we_i)
     begin
-      for (i = 0; i < DATA_WIDTH/8; i++) begin
-        if (be_i[i])
-          mem[addr][i] <= wdata[i];
-      end
+      acc_in_A     <= mem[0:255];
+      acc_in_B     <= mem[256:511];
+      mem[512:767] <= acc_out;
     end
 
-    rdata_o <= mem[addr];
-  end
+  always @(posedge clk)
+    begin
+      if (en_i && we_i)
+        begin
+          for (i = 0; i < DATA_WIDTH/8; i++) begin
+            if (be_i[i])
+              mem[addr][i] <= wdata[i];
+          end
+        end
+
+      rdata_o <= mem[addr];
+    end
 
   genvar w;
   generate for(w = 0; w < DATA_WIDTH/8; w++)

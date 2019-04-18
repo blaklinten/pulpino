@@ -18,7 +18,6 @@ module data_to_acc (
 
 	logic start;
 
-	assign mat_C = mat_C_in_to_here;
 	
 	//nu kan den aldrig sättas tillbaka till noll, fixa nån gång
 	if(baseaddr-1==addr)
@@ -41,12 +40,13 @@ module data_to_acc (
 	generate
 		for (int i = 0; i < 1024; i++) begin
 			if(baseaddr+2048+i==addr)
-				assign data_out = mat_C;
+				assign data_out[7:0] = mat_C[i];
 		end
 	endgenerate
 
 	assign mat_A_out_from_here = mat_A;
 	assign mat_B_out_from_here = mat_B;
+	assign mat_C = mat_C_in_to_here;
 
 	top_acc accelerator (
 		.clk  (clk                ),
