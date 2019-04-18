@@ -53,10 +53,10 @@ sw:
 
 .PHONY: clean
 clean:
-	make -C ips/xilinx_clock_manager/ clean
-	make -C ips/xilinx_mem_8192x32/ clean
-	make -C ips/xilinx_mem_32768x32_dp/ clean
-	make -C ips/xilinx_fp_fma/ clean
+########make -C ips/xilinx_clock_manager/ clean
+########make -C ips/xilinx_mem_8192x32/ clean
+########make -C ips/xilinx_mem_32768x32_dp/ clean
+########make -C ips/xilinx_fp_fma/ clean
 	make -C pulpino clean
 	make -C pulpemu clean
 	make -C sw clean

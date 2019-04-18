@@ -133,10 +133,10 @@ sd_image/BOOT.BIN: sd_image/u-boot.elf sd_image/pulpemu_top.bit boot.bif sd_imag
 
 .PHONY: clean
 clean:
-	rm -rf u-boot-xlnx
-	make -C linux-xlnx clean
-	rm -f linux-xlnx/.config
-	rm -f buildroot/.config
-	make -C buildroot clean
+########rm -rf u-boot-xlnx
+########make -C linux-xlnx clean
+########rm -f linux-xlnx/.config
+########rm -f buildroot/.config
+########make -C buildroot clean
 	rm -f hsi/pulpemu_top.sysdef
 	rm -f sd_image/*

@@ -51,22 +51,15 @@ module sp_ram_wrap #(
   );
 
 
-  always @(posedge clk) begin
+  always @(*) begin
     if(addr_i>= 32'h000003FF & addr_i<=32'h00000C00) begin
-      rdata_o <= acc_data_out;
-      acc_data_in <= wdata_i;
+      rdata_o = acc_data_out;
+      acc_data_in = wdata_i;
     end
     else begin
-      rdata_o <= mem_read;
-      mem_write <= wdata_i;
+      rdata_o = mem_read;
+      mem_write = wdata_i;
     end
   end
-
-
-
-
-
-
-
 
   endmodule
