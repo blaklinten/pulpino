@@ -24,7 +24,7 @@ module sp_ram_wrap #(
   output logic [  DATA_WIDTH-1:0]      rdata_o           ,
   input  logic                         we_i              ,
   input  logic [DATA_WIDTH/8-1:0]      be_i              ,
-  input  logic                         bypass_en_i       ,
+  input  logic                         bypass_en_i       
 );
 
   logic mem_read    [DATA_WIDTH-1:0];
@@ -51,14 +51,15 @@ module sp_ram_wrap #(
   );
 
 
-  if(addr_i>= 32'h000003FF & addr_i<=32'h00000C00) begin
-    assign rdata_o = acc_data_out;
-    assign acc_data_in = wdata_i;
-  end
-  else begin
-    assign rdata_o = mem_read;
-    assign mem_write =wdata_i;
-  end
+  always @(posedge clk) begin
+    if(addr_i>= 32'h000003FF & addr_i<=32'h00000C00) begin
+      rdata_o <= acc_data_out;
+      acc_data_in <= wdata_i;
+    end
+    else begin
+      rdata_o <= mem_read;
+      mem_write <= wdata_i;
+    end
 
 
 
