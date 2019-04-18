@@ -41,6 +41,7 @@ set SRC_PULPINO " \
    $ACC/top_acc.sv \
    $ACC/multiply2.sv \
    $ACC/multiply_long.sv \
+   $ACC/data_to_acc.sv \
 
 "
 

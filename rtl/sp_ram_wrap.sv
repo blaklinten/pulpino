@@ -27,10 +27,10 @@ module sp_ram_wrap #(
   input  logic                         bypass_en_i       
 );
 
-  logic mem_read    [DATA_WIDTH-1:0];
-  logic mem_write   [DATA_WIDTH-1:0];
-  logic acc_data_out[DATA_WIDTH-1:0];
-  logic acc_data_in [DATA_WIDTH-1:0];
+  logic [DATA_WIDTH-1:0] mem_read;
+  logic [DATA_WIDTH-1:0] mem_write;
+  logic [DATA_WIDTH-1:0] acc_data_out;
+  logic [DATA_WIDTH-1:0] acc_data_in;
 
   xilinx_mem_8192x32 sp_ram_i (
     .clka (clk                   ),
@@ -60,6 +60,7 @@ module sp_ram_wrap #(
       rdata_o <= mem_read;
       mem_write <= wdata_i;
     end
+  end
 
 
 

@@ -202,7 +202,7 @@ module pulpino_top
     .trstn_i        ( trstn_i           ),
     .tms_i          ( tms_i             ),
     .tdi_i          ( tdi_i             ),
-    .tdo_o          ( tdo_o             ),
+    .tdo_o          ( tdo_o             )
   );
 
   //----------------------------------------------------------------------------//
