@@ -18,16 +18,16 @@ module data_to_acc (
 
 	
 	//nu kan den aldrig sättas tillbaka till noll, fixa nån gång
-        always @(posedge clk) 
+        always @(*) 
         begin
           if(addr == 1023)
-            start <= 'b1;
+            start = 'b1;
           if(1023 < addr < 2048) 
-            mat_A[addr-1024] <= data_in[7:0];
+            mat_A[addr-1024] = data_in[7:0];
           if(2047 < addr < 3072) 
-            mat_B[addr-2048] <= data_in[7:0];
+            mat_B[addr-2048] = data_in[7:0];
           if(3071 < addr < 4096)
-            data_out[7:0] <= mat_C[addr-3072];
+            data_out[7:0] = mat_C[addr-3072];
         end
 
 	assign mat_A_out_from_here = mat_A;

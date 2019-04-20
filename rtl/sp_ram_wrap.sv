@@ -46,8 +46,8 @@ module sp_ram_wrap #(
   data_to_acc data_to_acc_i (
     .addr     (addr_i       ),
     .data_in  (acc_data_in  ),
-    .data_out (acc_data_out),
-    .clk (clk)
+    .data_out (acc_data_out ),
+    .clk      (clk          )
   );
 
 

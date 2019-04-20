@@ -11,7 +11,7 @@ void
 placeDataInMemory(struct Matrises *matrix)
 {
   // Start at address 0x100001
-  unsigned int addr = DATA_RAM_BASE_ADDR + 1000;
+  unsigned int addr = DATA_RAM_BASE_ADDR + 1024;
 
   // Place out matrixA
   
@@ -50,16 +50,5 @@ printOutData(int start)
 	}
       printf("\n");
     }
-}
-
-// Test function
-void
-testGetData()
-{
-  *(volatile int*) (DATA_RAM_BASE_ADDR) = 2;
-  volatile int a = *(volatile int*) (DATA_RAM_BASE_ADDR);
-  printf("Value: %d\n", a);
-  //int test = 2;
-  //printf("%d\n", test);
-  //printf("%p\n", &test);
+  printf("\n");
 }

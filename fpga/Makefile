@@ -48,7 +48,8 @@ pulpemu/pulpemu_top.bit:
 
 .PHONY: sw
 sw:
-	make -C sw all
+	#Added clean /Lucas
+	make -C sw clean all
 
 
 .PHONY: clean

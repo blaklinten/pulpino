@@ -38,9 +38,9 @@ main(int argc, char *argv[])
   // runAccelerator();
   
   // Print out the resulting data from memory
-  printOutData(1000);
-  //printOutData(0x401);
-  //printOutData(0x801);
+  for(int i = 0; i < 100; i++){
+    printOutData(i);
+  }
 
   //testGetData();
 

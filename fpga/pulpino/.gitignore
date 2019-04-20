@@ -7,4 +7,5 @@ pulpino_funcsim.v
 pulpino_stub.v
 vivado.jou
 vivado.log
-reports
+reports*
+pulpino.sim
