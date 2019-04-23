@@ -29,7 +29,9 @@ module periph_bus_wrap
     APB_BUS.Master    i2c_master,
     APB_BUS.Master    fll_master,
     APB_BUS.Master    soc_ctrl_master,
-    APB_BUS.Master    debug_master
+    APB_BUS.Master    debug_master,
+    // Hardware accelerator
+    APB_BUS.Master    accelerator_master
 
     );
 
@@ -89,6 +91,10 @@ module periph_bus_wrap
   `APB_ASSIGN_MASTER(s_masters[8], debug_master);
   assign s_start_addr[8] = `DEBUG_START_ADDR;
   assign s_end_addr[8]   = `DEBUG_END_ADDR;
+
+  `APB_ASSIGN_MASTER(s_masters[9], accelerator_master);
+  assign s_start_addr[9] = `ACC_START_ADDR;
+  assign s_end_addr[9]   = `ACC_END_ADDR;
 
   //********************************************************
   //**************** SOC BUS *******************************
