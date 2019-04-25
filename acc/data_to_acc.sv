@@ -1,8 +1,10 @@
 module data_to_acc (
+	input  logic        clk     ,
+        input  logic        start   ,
+        input  logic        done    ,
 	input  logic [31:0] addr    ,
 	input  logic [31:0] data_in ,
-	output logic [31:0] data_out,
-	input  logic        clk
+	output logic [31:0] data_out
 );
 
 

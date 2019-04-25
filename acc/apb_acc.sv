@@ -23,19 +23,22 @@ module apb_acc
 top_acc
 top_acc_i
 (
-  .clk          (       clk     ),
-  .start        (       start   ),
-  .done         (       done    ),
-  .acc_out      (       acc_out ),
-  .acc_in_A     (       acc_in_A),
-  .acc_in_B     (       acc_in_B)
+  .clk          (       clk       ),
+  .start        (       start     ),
+  .done         (       done      ),
+  .acc_out      (       acc_out   ),
+  .acc_in_A     (       acc_in_A  ),
+  .acc_in_B     (       acc_in_B  )
 );
 
   always_ff @(posedge HCLK, negedge HRESETn)
   begin
     if (~HRESETn)
     begin
-      //reset all signals
+      acc_out   <= 'h0;
+      acc_in_A  <= 'h0;
+      acc_in_B  <= 'h0;
+      start     <= 'h0;
     end
     else
     begin
