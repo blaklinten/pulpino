@@ -1,8 +1,0 @@
-/home/adam/pulpinomedacc/pulpino/acc/testbench_multiply.sv {1 {vlog -work work -sv -stats=none /home/adam/pulpinomedacc/pulpino/acc/testbench_multiply.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.6d Compiler 2018.02 Feb 24 2018
--- Compiling module testbench_multiply
-
-Top level modules:
-	testbench_multiply
-
-} {} {}}

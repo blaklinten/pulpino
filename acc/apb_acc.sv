@@ -19,7 +19,6 @@ module apb_acc
   logic [1023:0][7:0]   acc_in_A;
   logic [1023:0][7:0]   acc_in_B;
 
-
 top_acc
 top_acc_i
 (
@@ -31,27 +30,72 @@ top_acc_i
   .acc_in_B     (       acc_in_B  )
 );
 
+assign clk = HCLK;
+assign addr = PADDR[11:0];
+
   always_ff @(posedge HCLK, negedge HRESETn)
   begin
     if (~HRESETn)
     begin
-      acc_out   <= 'h0;
-      acc_in_A  <= 'h0;
-      acc_in_B  <= 'h0;
-      start     <= 'h0;
+  //    PRDATA   <= 'h0;
+  //    PREADY  <= 'h0;
+      PSLVERR  <= 'h0;
     end
     else
     begin
       if (PSEL && PENABLE && PWRITE)
       begin
-        //Start check adress?
+        case (addr)
+          0:
+            start <= PWDATA[0];
+          1:
+            acc_in_A[0] <= PWDATA[7:0];
+            acc_in_A[1] <= PWDATA[15:8];
+            acc_in_A[2] <= PWDATA[23:16];
+            acc_in_A[3] <= PWDATA[31:24];
+          5:
+            acc_in_A[4] <= PWDATA[7:0];
+            acc_in_A[5] <= PWDATA[15:8];
+            acc_in_A[6] <= PWDATA[23:16];
+            acc_in_A[7] <= PWDATA[31:24];
+          1025:
+            acc_in_B[0] <= PWDATA[7:0];
+            acc_in_B[1] <= PWDATA[15:8];
+            acc_in_B[2] <= PWDATA[23:16];
+            acc_in_B[3] <= PWDATA[31:24];
+          1029:
+            acc_in_B[4] <= PWDATA[7:0];
+            acc_in_B[5] <= PWDATA[15:8];
+            acc_in_B[6] <= PWDATA[23:16];
+            acc_in_B[7] <= PWDATA[31:24];
+        endcase
       end
     end
   end
 
+  //Assign outputs and inputs from local variables
   always_comb
   begin
-    //Assign outputs and inputs from local variables
+    case (addr)
+      0:
+        PWDATA[1]      = done;
+      2049:
+        // 2049 = 1024 bytes * 2 ( tredje matrisen) + 1
+        PRDATA[7:0]    = acc_out[0];
+        PRDATA[15:8]   = acc_out[1];
+        PRDATA[23:16]  = acc_out[2];
+        PRDATA[31:24]  = acc_out[3];
+      2053:                
+        PRDATA[7:0]    = acc_out[4];
+        PRDATA[15:8]   = acc_out[5];
+        PRDATA[23:16]  = acc_out[6];
+        PRDATA[31:24]  = acc_out[7];
+      default:
+        PRDATA[7:0]    = 1337;
+    endcase
   end
+
+  assign PREADY  = 1'b1;
+  assign PSLVERR = 1'b0;
 
 endmodule

@@ -1,4 +1,4 @@
-module multiply_long #(
+module matrix_multiply #(
   parameter mat_size = 2,
   parameter dat_size = 8
 ) (
