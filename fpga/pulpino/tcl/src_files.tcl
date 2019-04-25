@@ -39,9 +39,7 @@ set SRC_PULPINO " \
    $RTL/clk_rst_gen.sv \
    $FPGA_RTL/pulpino_wrap.v \
    $ACC/top_acc.sv \
-   $ACC/multiply2.sv \
-   $ACC/multiply_long.sv \
-   $ACC/data_to_acc.sv \
-
+   $ACC/matrix_multiply.sv \
+   $ACC/apb_acc.sv \
 "
 

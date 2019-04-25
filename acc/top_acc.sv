@@ -13,7 +13,7 @@ module top_acc #(
     .dat_size   (dat_size),
     .mat_size   (mat_size)
   ) matrix_multiply_i (
-    .start      ('b1     ),
+    .start      (start   ),
     .done       (done    ),
     .mat_C      (acc_out ),
     .mat_A      (acc_in_A),
