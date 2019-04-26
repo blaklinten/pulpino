@@ -1,4 +1,7 @@
 module apb_acc
+#(
+    parameter APB_ADDR_WIDTH = 12  //APB slaves are 4KB by default
+)
 (
   input  logic                      HCLK,
   input  logic                      HRESETn,
@@ -39,7 +42,7 @@ assign addr = PADDR[11:0];
     begin
   //    PRDATA   <= 'h0;
   //    PREADY  <= 'h0;
-      PSLVERR  <= 'h0;
+//      PSLVERR  <= 'h0;
     end
     else
     begin
@@ -86,7 +89,7 @@ assign addr = PADDR[11:0];
   begin
     case (addr)
       0:
-        PWDATA[1]      = done;
+        PRDATA[1]      = done;
       2049:
       begin
         // 2049 = 1024 bytes * 2 ( tredje matrisen) + 1
@@ -103,7 +106,7 @@ assign addr = PADDR[11:0];
         PRDATA[31:24]  = acc_out[7];
       end
       default:
-        PRDATA[7:0]    = 1337;
+        PRDATA[7:0]    = 8'b01101;
     endcase
   end
 

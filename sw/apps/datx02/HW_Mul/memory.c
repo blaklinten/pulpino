@@ -5,13 +5,14 @@
  *  MATRIX_B   0x100401 -> 0x100800
  *  MATRIX_ANS 0x100801 -> 0x100C00
  */
+// ^ NOT ANYMORE!!! ^
 
 // Take the struct containing the values and place it in memory
 void
 placeDataInMemory(struct Matrises *matrix)
 {
-  // Start at address 0x100001
-  unsigned int addr = DATA_RAM_BASE_ADDR + 1024;
+  // Start at address 0x1A108001
+  unsigned int addr = HW_ACCELERATOR_BASE_ADDR + 1;
 
   // Place out matrixA
   
@@ -38,7 +39,7 @@ placeDataInMemory(struct Matrises *matrix)
 void
 printOutData(int start)
 {
-  int addr = DATA_RAM_BASE_ADDR + start;
+  int addr = HW_ACCELERATOR_BASE_ADDR + start;
   
   for(int y = 0; y < MATRIX_ELEMENT; y++)
     {
