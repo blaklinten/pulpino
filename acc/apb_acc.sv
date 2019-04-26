@@ -2,7 +2,7 @@ module apb_acc
 (
   input  logic                      HCLK,
   input  logic                      HRESETn,
-  input  logic [APB_ADDR_WIDTH-1:0] PADDR,
+  input  logic [32-1:0] PADDR,
   input  logic               [31:0] PWDATA,
   input  logic                      PWRITE,
   input  logic                      PSEL,
