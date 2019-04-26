@@ -23,6 +23,14 @@ printHelp()
 }
 */
 
+void
+runAccelerator(void)
+{
+  unsigned int addr = HW_ACCELERATOR_BASE_ADDR;
+
+  *(volatile unsigned char*) (addr) = 1;
+}
+
 int
 main(int argc, char *argv[])
 {
@@ -35,12 +43,10 @@ main(int argc, char *argv[])
   placeDataInMemory(&matrix);
   
   // TODO: Run the accelerator
-  // runAccelerator();
+  runAccelerator();
   
   // Print out the resulting data from memory
-  for(int i = 0; i < 100; i++){
-    printOutData(i);
-  }
+    printOutData(1);
 
   //testGetData();
 

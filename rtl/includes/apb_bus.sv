@@ -40,7 +40,7 @@
 // MASTER PORT TO I2C
 `define I2C_START_ADDR        32'h1A10_5000
 `define I2C_END_ADDR          32'h1A10_5FFF
-10
+
 // MASTER PORT TO FLL
 `define FLL_START_ADDR        32'h1A10_6000
 `define FLL_END_ADDR          32'h1A10_6FFF

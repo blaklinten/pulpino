@@ -55,6 +55,9 @@
 /** Data RAM */
 #define DATA_RAM_BASE_ADDR            ( 0x00100000 )
 
+ /** HARDWARE ACCELERATOR */
+#define HW_ACCELERATOR_BASE_ADDR      ( 0x1A108000 )
+
 /** Registers and pointers */
 #define REGP(x) ((volatile unsigned int*)(x))
 #define REG(x) (*((volatile unsigned int*)(x)))
