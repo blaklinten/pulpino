@@ -100,7 +100,7 @@ module peripherals
   );
 
   localparam APB_ADDR_WIDTH  = 32;
-  localparam APB_NUM_SLAVES  = 8;
+  localparam APB_NUM_SLAVES  = 8; //9
 
   APB_BUS s_apb_bus();
 
@@ -114,7 +114,7 @@ module peripherals
   APB_BUS s_soc_ctrl_bus();
   APB_BUS s_debug_bus();
   // Hardware accelerator
-  APB_BUS s_acc_bus();
+  //APB_BUS s_acc_bus();
 
   logic [1:0]   s_spim_event;
   logic [3:0]   timer_irq;
@@ -229,9 +229,9 @@ module peripherals
      .i2c_master        ( s_i2c_bus        ),
      .fll_master        ( s_fll_bus        ),
      .soc_ctrl_master   ( s_soc_ctrl_bus   ),
-     .debug_master      ( s_debug_bus      ),
+     .debug_master      ( s_debug_bus      )
      // Hardware accelerator
-     .accelerator_master( s_acc_bus        )
+     //.accelerator_master( s_acc_bus        )
   );
 
   //////////////////////////////////////////////////////////////////
@@ -557,19 +557,18 @@ module peripherals
   ///                                                            ///
   //////////////////////////////////////////////////////////////////
 
-    apb_acc
-    apb_acc_i
-    (
-      .HCLK        ( clk_i        ),
-      .HRESETn     ( rst_n        ),
+//  apb_acc apb_acc_i
+//  (
+//    .HCLK        ( clk_i        ),
+//    .HRESETn     ( rst_n        ),
 
-      .PADDR       ( s_acc_bus.paddr      ),
-      .PWDATA      ( s_acc_bus.pwdata     ),
-      .PWRITE      ( s_acc_bus.pwrite     ),
-      .PSEL        ( s_acc_bus.psel       ),
-      .PENABLE     ( s_acc_bus.penable    ),
-      .PRDATA      ( s_acc_bus.prdata     ),
-      .PREADY      ( s_acc_bus.pready     ),
-      .PSLVERR     ( s_acc_bus.pslverr    )
-    );
+//    .PADDR       ( s_acc_bus.paddr      ),
+//    .PWDATA      ( s_acc_bus.pwdata     ),
+//    .PWRITE      ( s_acc_bus.pwrite     ),
+//    .PSEL        ( s_acc_bus.psel       ),
+//    .PENABLE     ( s_acc_bus.penable    ),
+//    .PRDATA      ( s_acc_bus.prdata     ),
+//    .PREADY      ( s_acc_bus.pready     ),
+//    .PSLVERR     ( s_acc_bus.pslverr    )
+//  );
 endmodule
