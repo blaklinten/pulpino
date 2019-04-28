@@ -8,5 +8,6 @@
 void placeDataInMemory(struct Matrises *);
 void printOutData(int start);
 void testGetData();
+void adamsWay(struct Matrises *);
 
 #endif

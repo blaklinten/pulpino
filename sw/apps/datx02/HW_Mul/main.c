@@ -43,10 +43,21 @@ main(int argc, char *argv[])
   placeDataInMemory(&matrix);
   
   // TODO: Run the accelerator
-  runAccelerator();
+//  runAccelerator();
   
   // Print out the resulting data from memory
-    printOutData(1);
+//    printOutData(1);
+  
+  adamsWay(&matrix);
+
+  int addr = HW_ACCELERATOR_BASE_ADDR;
+  for (int i = 0; i < 1024; i++){
+      volatile unsigned char data = *(volatile unsigned char*) (addr + i);
+      printf("%d ", data);
+    if ( i % 32 == 0) {
+      printf("\n");
+    }
+  }
 
   //testGetData();
 

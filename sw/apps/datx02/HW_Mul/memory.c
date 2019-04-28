@@ -35,6 +35,18 @@ placeDataInMemory(struct Matrises *matrix)
     }
 }
 
+void
+adamsWay(struct Matrises *matrix)
+{
+  unsigned int addr = HW_ACCELERATOR_BASE_ADDR;
+  unsigned int word = 0x05060701;
+
+  *(volatile unsigned int*) (addr) = word;
+  *(volatile unsigned int*) (addr + 4) = word;
+  *(volatile unsigned int*) (addr + 1024) = word;
+  *(volatile unsigned int*) (addr + 1028) = word;
+}
+
 // Print the data that the accelerator have calculated
 void
 printOutData(int start)
