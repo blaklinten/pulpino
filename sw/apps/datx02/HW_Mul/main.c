@@ -46,18 +46,10 @@ main(int argc, char *argv[])
 //  runAccelerator();
   
   // Print out the resulting data from memory
-//    printOutData(1);
-  
-  adamsWay(&matrix);
-
-  int addr = HW_ACCELERATOR_BASE_ADDR;
-  for (int i = 0; i < 1024; i++){
-      volatile unsigned char data = *(volatile unsigned char*) (addr + i);
-      printf("%d ", data);
-    if ( i % 32 == 0) {
-      printf("\n");
-    }
-  }
+ for (int i = 1; i < 11; i++){
+    printOutData(i * 4);
+ }
+//  adamsWay(&matrix);
 
   //testGetData();
 
