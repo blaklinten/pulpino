@@ -111,7 +111,7 @@ assign addr = PADDR[11:2];
       begin
         PRDATA[15:0] = acc_out[8];
         PRDATA[31:16] = 16'b0000000000000000;
-
+      end
       default:
         PRDATA = 32'b11111111111111111111111111111111;
     endcase
