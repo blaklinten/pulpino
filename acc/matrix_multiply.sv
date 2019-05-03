@@ -48,5 +48,6 @@ module matrix_multiply #(
     mat_C[8] <= 
               mat_A[6] * mat_B[2] +
               mat_A[7] * mat_B[5] +
-              mat_A[8] * mat_B[8];         
+              mat_A[8] * mat_B[8];
+    end         
 endmodule
