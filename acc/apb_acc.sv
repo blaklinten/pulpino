@@ -18,9 +18,9 @@ module apb_acc
   logic                 clk;
 //  logic                 start;
 //  logic                 done;
-  logic [1023:0][15:0]   acc_out;
-  logic [1023:0][7:0]   acc_in_A;
-  logic [1023:0][7:0]   acc_in_B;
+  logic [8:0][15:0]   acc_out;
+  logic [8:0][7:0]   acc_in_A;
+  logic [8:0][7:0]   acc_in_B;
   logic [11:0]          addr;
   logic [31:0]          data;
 

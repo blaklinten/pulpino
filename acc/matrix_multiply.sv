@@ -5,9 +5,9 @@ module matrix_multiply #(
   // input  logic            start        ,
   // output logic            done         ,
   input  logic            clk          , 
-  input  logic [1023:0][7:0] mat_A ,
-  input  logic [1023:0][7:0] mat_B ,
-  output logic [1023:0][15:0] mat_C
+  input  logic [8:0][7:0] mat_A ,
+  input  logic [8:0][7:0] mat_B ,
+  output logic [8:0][15:0] mat_C
 );
 
   always @(posedge clk)
