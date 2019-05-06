@@ -47,7 +47,7 @@ main(int argc, char *argv[])
   
   // Print out the resulting data from memory
   // for each word in matrix; do
-  for (int i = 0; i < 9; i++){
+  for (int i = 0; i < 8; i++){
     // Start at address BASE_ADDR + 4
     printOutData(i * 4 + 4);
   }

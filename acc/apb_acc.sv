@@ -62,21 +62,44 @@ assign addr = PADDR[11:2];
           3:
           begin
             acc_in_A[8] <= PWDATA[7:0];
-            acc_in_B[0] <= PWDATA[15:8];
-            acc_in_B[1] <= PWDATA[23:16];
-            acc_in_B[2] <= PWDATA[31:24];
+            acc_in_A[9] <= PWDATA[15:8];
+            acc_in_A[10] <= PWDATA[23:16];
+            acc_in_A[11] <= PWDATA[31:24];
           end
           4:
           begin
-            acc_in_B[3] <= PWDATA[7:0];
-            acc_in_B[4] <= PWDATA[15:8];
-            acc_in_B[5] <= PWDATA[23:16];
-            acc_in_B[6] <= PWDATA[31:24];
+            acc_in_A[12] <= PWDATA[7:0];
+            acc_in_A[13] <= PWDATA[15:8];
+            acc_in_A[14] <= PWDATA[23:16];
+            acc_in_A[15] <= PWDATA[31:24];
           end
-          5:
+          1025:
           begin
-            acc_in_A[7] <= PWDATA[7:0];
-            acc_in_A[8] <= PWDATA[15:8];
+            acc_in_B[0] <= PWDATA[7:0];
+            acc_in_B[1] <= PWDATA[15:8];
+            acc_in_B[2] <= PWDATA[23:16];
+            acc_in_B[3] <= PWDATA[31:24];
+          end
+          1026:
+          begin
+            acc_in_B[4] <= PWDATA[7:0];
+            acc_in_B[5] <= PWDATA[15:8];
+            acc_in_B[6] <= PWDATA[23:16];
+            acc_in_B[7] <= PWDATA[31:24];
+          end
+          1027:
+          begin
+            acc_in_B[8] <= PWDATA[7:0];
+            acc_in_B[9] <= PWDATA[15:8];
+            acc_in_B[10] <= PWDATA[23:16];
+            acc_in_B[11] <= PWDATA[31:24];
+          end
+          1028:
+          begin
+            acc_in_B[12] <= PWDATA[7:0];
+            acc_in_B[13] <= PWDATA[15:8];
+            acc_in_B[14] <= PWDATA[23:16];
+            acc_in_B[15] <= PWDATA[31:24];
           end
         endcase
       end
@@ -110,7 +133,22 @@ assign addr = PADDR[11:2];
       5:
       begin
         PRDATA[15:0] = acc_out[8];
-        PRDATA[31:16] = 16'b0000000000000000;
+        PRDATA[31:16] = acc_out[9];
+      end
+      6:
+      begin
+        PRDATA[15:0] = acc_out[10];
+        PRDATA[31:16] = acc_out[11];
+      end
+      7:
+      begin
+        PRDATA[15:0] = acc_out[12];
+        PRDATA[31:16] = acc_out[13];
+      end
+      8:
+      begin
+        PRDATA[15:0] = acc_out[14];
+        PRDATA[31:16] = acc_out[15];
       end
       default:
         PRDATA = 32'b11111111111111111111111111111111;
