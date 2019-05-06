@@ -3,7 +3,7 @@
 
 #include "pulpino.h"
 
-#define MATRIX_ELEMENT 32
+#define MATRIX_ELEMENT 3
 
 struct Matrises {
   // The two matrices

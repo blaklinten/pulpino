@@ -46,9 +46,11 @@ main(int argc, char *argv[])
 //  runAccelerator();
   
   // Print out the resulting data from memory
- for (int i = 1; i < 11; i++){
-    printOutData(i * 4);
- }
+  // for each word in matrix; do
+  for (int i = 0; i < 9; i++){
+    // Start at address BASE_ADDR + 4
+    printOutData(i * 4 + 4);
+  }
 //  adamsWay(&matrix);
 
   //testGetData();
