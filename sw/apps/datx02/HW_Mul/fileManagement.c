@@ -21,8 +21,8 @@ getFromFile(struct Matrises *matrix)
     {
       for(int x = 0; x < MATRIX_ELEMENT; x++)
 	{
-	  matrix->matrixA[y][x] = 2;
-	  matrix->matrixB[y][x] = 3;
+	  matrix->matrixA[y][x] = y * 4 + x;
+	  matrix->matrixB[y][x] = y * 4 + x;
 	}
     }
 }

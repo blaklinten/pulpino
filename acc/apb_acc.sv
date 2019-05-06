@@ -18,9 +18,9 @@ module apb_acc
   logic                 clk;
 //  logic                 start;
 //  logic                 done;
-  logic [1023:0][15:0]   acc_out;
-  logic [1023:0][7:0]   acc_in_A;
-  logic [1023:0][7:0]   acc_in_B;
+  logic [15:0][15:0]   acc_out;
+  logic [15:0][7:0]   acc_in_A;
+  logic [15:0][7:0]   acc_in_B;
   logic [11:0]          addr;
   logic [31:0]          data;
 
@@ -73,28 +73,28 @@ assign addr = PADDR[11:2];
             acc_in_A[14] <= PWDATA[23:16];
             acc_in_A[15] <= PWDATA[31:24];
           end
-          1025:
+          5:
           begin
             acc_in_B[0] <= PWDATA[7:0];
             acc_in_B[1] <= PWDATA[15:8];
             acc_in_B[2] <= PWDATA[23:16];
             acc_in_B[3] <= PWDATA[31:24];
           end
-          1026:
+          6:
           begin
             acc_in_B[4] <= PWDATA[7:0];
             acc_in_B[5] <= PWDATA[15:8];
             acc_in_B[6] <= PWDATA[23:16];
             acc_in_B[7] <= PWDATA[31:24];
           end
-          1027:
+          7:
           begin
             acc_in_B[8] <= PWDATA[7:0];
             acc_in_B[9] <= PWDATA[15:8];
             acc_in_B[10] <= PWDATA[23:16];
             acc_in_B[11] <= PWDATA[31:24];
           end
-          1028:
+          8:
           begin
             acc_in_B[12] <= PWDATA[7:0];
             acc_in_B[13] <= PWDATA[15:8];

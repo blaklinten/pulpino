@@ -73,15 +73,22 @@ printOutData(int start)
   // Find address to start printing from
   int addr = HW_ACCELERATOR_BASE_ADDR + start;
 
-  // Read a word from this address
-  volatile unsigned int data = *(volatile unsigned int*) (addr);
+  for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 2; i++){
+      // Read a word from this address
+      volatile unsigned int data = *(volatile unsigned int*) (addr);
 
-  // Extract the two half word (short)
-  unsigned short first = data & 0xFFFF;
-  unsigned short second = data >> 16;
+      // Extract the two half word (short)
+      unsigned short first = data & 0xFFFF;
+      unsigned short second = data >> 16;
 
-  // [DEBUG] print address and contents
-  printf("Address is %d and contains: \n", addr);
-  printf("%d \n", first);
-  printf("%d \n", second);
+      // Print the two half words (shorts)
+      printf("%d ", first);
+      printf("%d ", second);
+      // Increment addr to point to next int
+      addr = addr + 4;
+    }
+    printf("\n");
+  }
+  printf("\n");
 }
