@@ -49,10 +49,10 @@ module matrix_multiply #(
                 mat_A[6] * mat_B[10] +
                 mat_A[7] * mat_B[14];
     mat_C[7] <= 
-                mat_A[5] * mat_B[3] +
-                mat_A[6] * mat_B[7] +
-                mat_A[7] * mat_B[11] +
-                mat_A[8] * mat_B[15];
+                mat_A[4] * mat_B[3] +
+                mat_A[5] * mat_B[7] +
+                mat_A[6] * mat_B[11] +
+                mat_A[7] * mat_B[15];
     mat_C[8] <= 
                 mat_A[8] * mat_B[0] +
                 mat_A[9] * mat_B[4] +
